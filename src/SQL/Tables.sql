@@ -1,0 +1,13 @@
+CREATE TABLE animals2(
+  id SERIAL PRIMARY KEY,
+  animalName VARCHAR(100) NOT NULL,
+	animalBreed VARCHAR(100) NOT NULL, 
+  animalType VARCHAR(25) NOT NULL
+)
+
+CREATE TABLE users(
+  userId SERIAL PRIMARY KEY,
+  userName VARCHAR(100) NOT NULL,
+	password VARCHAR(100) NOT NULL
+ 
+)
