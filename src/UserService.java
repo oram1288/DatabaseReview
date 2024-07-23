@@ -26,5 +26,36 @@ public class UserService {
     }
 
 
+    public User authUser(String username,String password) throws SQLException{
+        if(username == null || password == null){
+            System.out.println("The User Does Not Exist");
+        }
+
+        User user = userDAO.getUserByUsername(username);
+
+        if(user == null){
+            System.out.println("The User Does Not Exist! ");
+            return null;
+        }
+
+        if(!BCrypt.checkpw(password, user.getPassword())){
+            System.out.println("Wrong Password, Please Try Again!");
+            return null;
+        }
+
+        System.out.println("User Has Passed Auth");
+
+        return user;
+    }
+
+    public void deleteUser(String userName) throws SQLException{
+        if(userName == null){
+            System.out.println("Please Enter A Email...");
+        }
+
+        userDAO.deleteUser(userName);
+
+        System.out.println("User " + userName + " Deleted");
+    }
     
 }
